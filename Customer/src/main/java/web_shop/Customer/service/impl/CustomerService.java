@@ -34,15 +34,19 @@ public class CustomerService implements CustomerServiceInterface {
     public void createCustomer(CustomerDto customerDto){
         customerRepo.save(objectMapper.convertValue(customerDto,Customer.class));
     }
-//    public CustomerDto updateCustomer(Long id , CustomerDto customerDto){
-//
-//        CustomerDto customerDto1=objectMapper.convertValue(customerRepo.findById(id).get(),CustomerDto.class);
-//        customerDto1 =customerDto;
-//        customerRepo.save(customerDto1);
-//
-//        return customerDto1;
-//
-//    }
+    public CustomerDto updateCustomer(Long id,CustomerDto customerDto){
+
+        Customer c = customerRepo.findById(id).get();
+        c.setCustomerId(id);
+        c.setAddress(customerDto.getAddress());
+        c.setContact(customerDto.getContact());
+        c.setLastName(customerDto.getLastName());
+        c.setFirstName(customerDto.getFirstName());
+        customerRepo.save(c);
+        return objectMapper.convertValue(c,CustomerDto.class);
+
+
+    }
     public void deleteCustomer(Long id){
 
         customerRepo.delete(customerRepo.findById(id).get());
