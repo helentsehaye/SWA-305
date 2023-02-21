@@ -9,6 +9,6 @@ public interface CustomerServiceInterface {
     public CustomerDto getCustomer(Long id);
     public List<CustomerDto> getCustomers();
     public void createCustomer(CustomerDto customerDTO);
-   // public CustomerDto updateCustomer(long customerNumber, CustomerDto customerDTO);
+    public CustomerDto updateCustomer(Long id, CustomerDto customerDTO);
     public void deleteCustomer(Long customerNumber);
 }
