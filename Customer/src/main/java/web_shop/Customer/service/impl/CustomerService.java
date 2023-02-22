@@ -17,7 +17,14 @@ public class CustomerService implements CustomerServiceInterface {
 
     @Autowired
     private CustomerRepo customerRepo;
+
+    public CustomerService(CustomerRepo customerRepo) {
+        this.customerRepo = customerRepo;
+    }
+
     ObjectMapper objectMapper = new ObjectMapper();
+
+
 
     public List<CustomerDto> getCustomers(){
         List<Customer> customers= customerRepo.findAll();
